@@ -1,0 +1,31 @@
+{
+  "name": "mern-app",
+  "version": "1.0.0",
+  "description": "mern app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NordOst88/mern-app.git"
+  },
+  "keywords": [
+    "mern"
+  ],
+  "author": "Vladislav Maltsev <drou@inbox.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NordOst88/mern-app/issues"
+  },
+  "homepage": "https://github.com/NordOst88/mern-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}
