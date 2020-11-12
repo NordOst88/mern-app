@@ -21,7 +21,11 @@
   },
   "homepage": "https://github.com/NordOst88/mern-app#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.2",
     "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.13"
   },
   "devDependencies": {
