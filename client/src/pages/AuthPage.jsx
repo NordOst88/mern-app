@@ -43,6 +43,7 @@ const AuthPage = () => {
           initialValues={{
             remember: true,
           }}
+          onFinish={loginHandler}
         >
           <h1 align="center">Авторизация</h1>
           <Form.Item
@@ -76,12 +77,7 @@ const AuthPage = () => {
           </Form.Item>
 
           <Form.Item {...FORM_CONFIG.TAIL_LAYOUT}>
-            <Button
-              type="primary"
-              htmlType="button"
-              onClick={loginHandler}
-              disabled={loading}
-            >
+            <Button type="primary" htmlType="submit" disabled={loading}>
               Войти
             </Button>
             <Button
