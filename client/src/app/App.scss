@@ -1,8 +1,17 @@
 @import "antd/dist/antd.css";
 
-.ant-layout {
-  background-color: transparent;
-  &-content {
+.ant {
+  &-layout {
+    background-color: transparent;
+    &-header {
+      background-color: transparent;
+    }
+  }
+  &-form {
     margin-top: 100px;
+  }
+  &-menu {
+    display: flex;
+    justify-content: flex-end;
   }
 }

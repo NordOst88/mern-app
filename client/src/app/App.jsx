@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Layout } from "antd";
-import { useDispatch } from "react-redux";
-import { setAuth } from "../reducers/auth";
+import { useSelector } from "react-redux";
+import { selectIsAuth } from "../reducers/auth";
 import { useRoutes } from "../routes";
-import { useAuth } from "../hooks/auth.hook";
+import Navbar from "../components/Navbar";
 import "./App.scss";
 
 const { Content } = Layout;
 
 function App() {
-  const { token, userId } = useAuth();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setAuth({ token, userId }));
-  }, [token, userId, dispatch]);
-  const routes = useRoutes(false);
+  const isAuthenticated = useSelector(selectIsAuth);
+  const routes = useRoutes(isAuthenticated);
+
   return (
     <Router>
       <Layout>
+        {isAuthenticated && <Navbar />}
         <Content>{routes}</Content>
       </Layout>
     </Router>

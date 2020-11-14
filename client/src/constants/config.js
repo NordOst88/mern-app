@@ -15,6 +15,4 @@ const FORM_CONFIG = {
   },
 };
 
-const storageName = "userData";
-
-export { FORM_CONFIG, storageName };
+export default FORM_CONFIG;

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Col, Row, message } from "antd";
 import { useHttp } from "../hooks/http.hook";
-import { FORM_CONFIG } from "../constants/config";
+import { useAuth } from "../hooks/auth.hook";
+import FORM_CONFIG from "../constants/config";
 
 const AuthPage = () => {
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({ email: "", password: "" });
+  const { login } = useAuth();
 
   useEffect(() => {
     if (error) {
@@ -25,6 +27,13 @@ const AuthPage = () => {
     } catch (e) {}
   };
 
+  const loginHandler = async () => {
+    try {
+      const data = await request("/api/auth/login", "POST", { ...form });
+      login(data.token, data.userID);
+    } catch (e) {}
+  };
+
   return (
     <Row justify="center">
       <Col span={8}>
@@ -34,8 +43,6 @@ const AuthPage = () => {
           initialValues={{
             remember: true,
           }}
-          // onFinish={onFinish}
-          // onFinishFailed={onFinishFailed}
         >
           <h1 align="center">Авторизация</h1>
           <Form.Item
@@ -69,7 +76,12 @@ const AuthPage = () => {
           </Form.Item>
 
           <Form.Item {...FORM_CONFIG.TAIL_LAYOUT}>
-            <Button type="primary" htmlType="submit" disabled={loading}>
+            <Button
+              type="primary"
+              htmlType="button"
+              onClick={loginHandler}
+              disabled={loading}
+            >
               Войти
             </Button>
             <Button
