@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setAuth, resetAuth } from "../reducers/auth";
+import { resetData } from "../reducers/data";
 import { STORAGE_NAME } from "../constants/constants";
 
 export const useAuth = () => {
@@ -33,6 +34,7 @@ export const useAuth = () => {
     setUserId(null);
     localStorage.removeItem(STORAGE_NAME);
     dispatch(resetAuth());
+    dispatch(resetData());
   }, [dispatch]);
 
   useEffect(() => {

@@ -1,13 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Col, Row } from "antd";
 import { useHttp } from "../hooks/http.hook";
 import { selectToken } from "../reducers/auth";
+import { fetchData } from "../reducers/data";
 import { FORM_CONFIG, VALIDATE_MSG } from "../constants/config";
 
 const CreateTaskPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const { request } = useHttp();
   const token = useSelector(selectToken);
 
@@ -17,7 +19,7 @@ const CreateTaskPage = () => {
       const data = await request("/api/task/create", "POST", valueWithDate, {
         Authorization: `Bearer ${token}`,
       });
-      console.log(data);
+      dispatch(fetchData(token));
       history.push(`/task/${data.task._id}`);
     } catch (e) {}
   };
