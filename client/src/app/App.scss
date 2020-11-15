@@ -1,0 +1,28 @@
+@import "antd/dist/antd.css";
+
+.ant {
+  &-layout {
+    background-color: transparent;
+    &-header {
+      background-color: transparent;
+    }
+  }
+  &-form {
+    margin-top: 50px;
+  }
+  &-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.loader-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-container {
+  margin: 50px 300px 0;
+}
