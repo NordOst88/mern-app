@@ -16,11 +16,11 @@ const CreateTaskPage = () => {
   const onFinish = async (values) => {
     const valueWithDate = { ...values, date: Date.now() };
     try {
-      const data = await request("/api/task/create", "POST", valueWithDate, {
+      await request("/api/task/create", "POST", valueWithDate, {
         Authorization: `Bearer ${token}`,
       });
       dispatch(fetchData(token));
-      history.push(`/task/${data.task._id}`);
+      history.push(`/tasks`);
     } catch (e) {}
   };
 
