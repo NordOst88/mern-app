@@ -29,6 +29,23 @@ router.delete("/delete/:id", auth, async (req, res) => {
   }
 });
 
+router.put("/update/:id", auth, async (req, res) => {
+  try {
+    const { name, date, description } = req.body;
+    const task = new Task({
+      _id: req.params.id,
+      name,
+      date,
+      description,
+      owner: req.user.userID,
+    });
+    await Task.updateOne({ _id: req.params.id }, task);
+    res.status(201).json({ message: "Обновлено!" });
+  } catch (e) {
+    res.status(400).json({ message: "Что-то пошло не так, попробуйте снова" });
+  }
+});
+
 router.get("/", auth, async (req, res) => {
   try {
     const tasks = await Task.find({ owner: req.user.userID });
