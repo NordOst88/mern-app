@@ -73,7 +73,7 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ message: "Неверный парольб попробуйте снова" });
+          .json({ message: "Неверный пароль, попробуйте снова" });
       }
 
       const token = jwt.sign({ userID: user.id }, config.get("jwtSecret"), {

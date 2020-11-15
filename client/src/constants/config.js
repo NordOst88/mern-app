@@ -1,18 +1,22 @@
 const FORM_CONFIG = {
   LAYOUT: {
     labelCol: {
-      span: 8,
+      span: 6,
     },
     wrapperCol: {
-      span: 16,
+      span: 24,
     },
   },
   TAIL_LAYOUT: {
     wrapperCol: {
-      offset: 8,
-      span: 16,
+      offset: 6,
+      span: 24,
     },
   },
 };
 
-export default FORM_CONFIG;
+const VALIDATE_MSG = {
+  required: "Необходимо заполнить поле",
+};
+
+export { FORM_CONFIG, VALIDATE_MSG };

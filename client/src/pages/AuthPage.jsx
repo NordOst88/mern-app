@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Col, Row, message } from "antd";
 import { useHttp } from "../hooks/http.hook";
 import { useAuth } from "../hooks/auth.hook";
-import FORM_CONFIG from "../constants/config";
+import { FORM_CONFIG } from "../constants/config";
 
 const AuthPage = () => {
   const { loading, request, error, clearError } = useHttp();
