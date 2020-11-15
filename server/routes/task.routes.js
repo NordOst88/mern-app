@@ -10,7 +10,7 @@ router.post("/create", auth, async (req, res) => {
       name,
       date,
       description,
-      owner: req.user.userId,
+      owner: req.user.userID,
     });
     await task.save();
     res.status(201).json({ task });
@@ -19,9 +19,19 @@ router.post("/create", auth, async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", auth, async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    await task.deleteOne();
+    res.status(200).json({ message: "Удалено!" });
+  } catch (e) {
+    res.status(400).json({ message: "Что-то пошло не так, попробуйте снова" });
+  }
+});
+
 router.get("/", auth, async (req, res) => {
   try {
-    const tasks = await Task.find({ owner: req.user.userId });
+    const tasks = await Task.find({ owner: req.user.userID });
     res.json(tasks);
   } catch (e) {
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });
